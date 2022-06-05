@@ -1,0 +1,5 @@
+tech\asmussen\util\Uptime.class
+module-info.class
+tech\asmussen\dvi\core\DVI.class
+tech\asmussen\dvi\ui\applications\TestApplication.class
+tech\asmussen\dvi\ui\controllers\TestController.class
