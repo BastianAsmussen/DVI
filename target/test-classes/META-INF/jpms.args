@@ -1,4 +1,0 @@
---patch-module
-tech.asmussen.dvi.ui=_
---add-reads
-tech.asmussen.dvi.ui=ALL-UNNAMED
