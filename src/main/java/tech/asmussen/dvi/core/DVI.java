@@ -5,7 +5,7 @@ import tech.asmussen.dvi.ui.applications.TestApplication;
 public class DVI {
 	
 	/**
-	 * Take a snapshot of the time the program started running.
+	 * A snapshot of the time in milliseconds the program started running.
 	 */
 	public static final long START_TIME = System.currentTimeMillis();
 	

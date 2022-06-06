@@ -17,6 +17,7 @@ public class TestApplication extends Application {
 		stage.setTitle("DVI - Statistik");
 		stage.setScene(scene);
 		stage.setResizable(false);
+		stage.setOnCloseRequest(event -> System.exit(0));
 		stage.show();
 	}
 	
