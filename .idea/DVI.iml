@@ -19,5 +19,9 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:18.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:18.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:18.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.rometools:rome:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: com.rometools:rome-utils:1.18.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
   </component>
 </module>

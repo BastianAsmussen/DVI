@@ -4,8 +4,12 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 import tech.asmussen.dvi.core.DVI;
+import tech.asmussen.dvi.core.News;
+import tech.asmussen.dvi.core.Outside;
+import tech.asmussen.dvi.core.Storage;
 import tech.asmussen.util.Uptime;
 
 import java.net.URL;
@@ -41,23 +45,46 @@ public class GUIController implements Initializable {
 	private Label sgTimeLabel;
 	
 	@FXML
+	private Label newsLabel;
+	
+	@FXML
 	private Label uptimeLabel;
+	
+	@FXML
+	private ListView<String> underMinimumList;
+	
+	@FXML
+	private ListView<String> overMaximumList;
+	
+	private static final int WAIT_TIME = 300; // Run every 5 minutes.
+	
+	private static int iteration = 0;
 	
 	private void updateUI() {
 		
-		/*
-		storageTemperatureLabel.setText(String.format("%.2f°C", DVI.getStorageTemperature()));
-		storageHumidityLabel.setText(String.format("%.2f%%", DVI.getStorageHumidity()));
-		
-		outsideTemperatureLabel.setText(String.format("%.2f°C", DVI.getOutsideTemperature()));
-		outsideHumidityLabel.setText(String.format("%.2f%%", DVI.getOutsideHumidity()));
+		uptimeLabel.setText(Uptime.format(DVI.START_TIME));
 		
 		dkTimeLabel.setText(DVI.getTime("DK"));
-		gbTimeLabel.setText(DVI.getGBTime("GB"));
-		sgTimeLabel.setText(DVI.getSGTime("SG"));
+		gbTimeLabel.setText(DVI.getTime("GB"));
+		sgTimeLabel.setText(DVI.getTime("SG"));
 		
-		 */
-		uptimeLabel.setText(Uptime.format(DVI.START_TIME));
+		if (iteration == 0) {
+			
+			System.out.println("Updating asynchronous items...");
+			
+			storageTemperatureLabel.setText(String.format("Temp: %.2f°C", Storage.getTemperature()));
+			storageHumidityLabel.setText(String.format("Fugt: %.2f%%", Storage.getHumidity()));
+			
+			outsideTemperatureLabel.setText(String.format("Temp: %.2f°C", Outside.getTemperature()));
+			outsideHumidityLabel.setText(String.format("Fugt: %.2f%%", Outside.getHumidity()));
+			
+			newsLabel.setText(new News().get());
+			
+			iteration = WAIT_TIME;
+			
+		} else
+			
+			iteration--;
 	}
 	
 	@Override

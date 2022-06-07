@@ -1,5 +1,7 @@
 module-info.class
 tech\asmussen\dvi\core\DVI.class
+tech\asmussen\dvi\core\Storage.class
+tech\asmussen\dvi\core\Outside.class
 tech\asmussen\dvi\core\News.class
 tech\asmussen\util\Uptime.class
 tech\asmussen\util\Threading.class

@@ -22,35 +22,31 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>18</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
-							<goal>single</goal>
+							<goal>shade</goal>
 						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>tech.asmussen.dvi.core.DVI</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<archive>
-						<manifest>
-							<mainClass>tech.asmussen.dvi.core.DVI</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
-				<configuration>
-					<source>18</source>
-					<target>18</target>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.openjfx</groupId>
@@ -59,6 +55,18 @@
 				<configuration>
 					<mainClass>tech.asmussen.dvi.core.DVI</mainClass>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -81,6 +89,12 @@
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
 			<version>18.0.1</version>
+		</dependency>
+		<!-- ROME -->
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.18.0</version>
 		</dependency>
 	</dependencies>
 </project>
