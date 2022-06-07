@@ -1,8 +1,7 @@
 package tech.asmussen.dvi.core;
 
-import tech.asmussen.dvi.ui.applications.TestApplication;
-
-import java.util.ArrayList;
+import tech.asmussen.dvi.ui.applications.GUIApplication;
+import tech.asmussen.util.Threading;
 
 public class DVI {
 	
@@ -11,26 +10,13 @@ public class DVI {
 	 */
 	public static final long START_TIME = System.currentTimeMillis();
 	
-	public static ArrayList<Thread> threadPool = new ArrayList<>();
-	
-	public static void startThreads() {
-		
-		for (Thread thread : threadPool)
-			
-			thread.start();
-	}
-	
-	public static Thread createThread(Runnable runnable) {
-		
-		return new Thread(runnable);
-	}
-	
 	public static void main(String[] args) {
 		
-		Runnable applicationRunner = () -> TestApplication.main(args);
+		Threading.createThread(() -> GUIApplication.main(args));
+		Threading.startThreads();
 		
-		threadPool.add(createThread(applicationRunner));
+		News news = new News();
 		
-		startThreads();
+		System.out.println(news.get());
 	}
 }

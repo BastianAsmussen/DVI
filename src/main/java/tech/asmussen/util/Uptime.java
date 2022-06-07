@@ -2,6 +2,10 @@ package tech.asmussen.util;
 
 /**
  * A utility class for getting the current time.
+ * @version 1.0.0
+ * @author Bastian A. W. Asmussen (BastianA)
+ * @see #getCurrentTime()
+ * @see #format(long)
  */
 public class Uptime {
 	
@@ -10,10 +14,11 @@ public class Uptime {
 	 *
 	 * @param startTime The time in milliseconds the program started running.
 	 * @return The formatted time.
+	 * @see #getCurrentTime()
 	 */
 	public static String format(long startTime) {
 		
-		final long milliseconds = System.currentTimeMillis() - startTime;
+		final long milliseconds = getCurrentTime() - startTime;
 		
 		final long days = milliseconds / (1_000 * 60 * 60 * 24);
 		final long hours = milliseconds / (1_000 * 60 * 60) % 24;
@@ -32,6 +37,7 @@ public class Uptime {
 	 * Get the current time in milliseconds.
 	 *
 	 * @return The current time in milliseconds.
+	 * @since 1.0.0
 	 */
 	public static long getCurrentTime() {
 		
