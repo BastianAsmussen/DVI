@@ -1,9 +1,6 @@
 package tech.asmussen.dvi.api;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,32 +25,13 @@ public class Storage {
 			
 			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockTemp xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>";
 			
-			connection.setDoOutput(true);
+			String response = API.generateConnection(connection, xml);
 			
-			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
-			
-			writer.writeBytes(xml);
-			writer.flush();
-			writer.close();
-			
-			BufferedReader input = new BufferedReader(
-					new InputStreamReader(connection.getInputStream()));
-			
-			String line;
-			
-			StringBuilder response = new StringBuilder();
-			
-			while ((line = input.readLine()) != null)
-				
-				response.append(line);
-			
-			input.close();
-			
-			if (!response.toString().contains("<StockTempResult>"))
+			if (!response.contains("<StockTempResult>"))
 				
 				return temperature;
 			
-			temperature = Double.parseDouble(response.toString().split("<StockTempResult>")[1].split("</StockTempResult>")[0]);
+			temperature = Double.parseDouble(response.split("<StockTempResult>")[1].split("</StockTempResult>")[0]);
 			
 		} catch (IOException | NumberFormatException e) {
 			
@@ -80,32 +58,13 @@ public class Storage {
 			
 			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockHumidity xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>";
 			
-			connection.setDoOutput(true);
+			String response = API.generateConnection(connection, xml);
 			
-			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
-			
-			writer.writeBytes(xml);
-			writer.flush();
-			writer.close();
-			
-			BufferedReader input = new BufferedReader(
-					new InputStreamReader(connection.getInputStream()));
-			
-			String line;
-			
-			StringBuilder response = new StringBuilder();
-			
-			while ((line = input.readLine()) != null)
-				
-				response.append(line);
-			
-			input.close();
-			
-			if (!response.toString().contains("<StockHumidityResult>"))
+			if (!response.contains("<StockHumidityResult>"))
 				
 				return humidityPercentage;
 			
-			humidityPercentage = Double.parseDouble(response.toString().split("<StockHumidityResult>")[1].split("</StockHumidityResult>")[0]);
+			humidityPercentage = Double.parseDouble(response.split("<StockHumidityResult>")[1].split("</StockHumidityResult>")[0]);
 			
 		} catch (IOException | NumberFormatException e) {
 			
@@ -132,32 +91,13 @@ public class Storage {
 			
 			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockItemsUnderMin xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>";
 			
-			connection.setDoOutput(true);
+			String response = API.generateConnection(connection, xml);
 			
-			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
-			
-			writer.writeBytes(xml);
-			writer.flush();
-			writer.close();
-			
-			BufferedReader input = new BufferedReader(
-					new InputStreamReader(connection.getInputStream()));
-			
-			String line;
-			
-			StringBuilder response = new StringBuilder();
-			
-			while ((line = input.readLine()) != null)
-				
-				response.append(line);
-			
-			input.close();
-			
-			if (!response.toString().contains("<StockItemsUnderMinResult>"))
+			if (!response.contains("<StockItemsUnderMinResult>"))
 				
 				System.out.println(items);
 			
-			Collections.addAll(items, response.toString().split("<StockItemsUnderMinResult>")[1].split("</StockItemsUnderMinResult>")[0].split("<string>"));
+			Collections.addAll(items, response.split("<StockItemsUnderMinResult>")[1].split("</StockItemsUnderMinResult>")[0].split("<string>"));
 			
 			items.replaceAll(s -> s.replace("</string>", ""));
 			items.remove(0);
@@ -189,32 +129,13 @@ public class Storage {
 			
 			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockItemsOverMax xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>";
 			
-			connection.setDoOutput(true);
+			String response = API.generateConnection(connection, xml);
 			
-			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
-			
-			writer.writeBytes(xml);
-			writer.flush();
-			writer.close();
-			
-			BufferedReader input = new BufferedReader(
-					new InputStreamReader(connection.getInputStream()));
-			
-			String line;
-			
-			StringBuilder response = new StringBuilder();
-			
-			while ((line = input.readLine()) != null)
-				
-				response.append(line);
-			
-			input.close();
-			
-			if (!response.toString().contains("<StockItemsOverMaxResult>"))
+			if (!response.contains("<StockItemsOverMaxResult>"))
 				
 				System.out.println(items);
 			
-			Collections.addAll(items, response.toString().split("<StockItemsOverMaxResult>")[1].split("</StockItemsOverMaxResult>")[0].split("<string>"));
+			Collections.addAll(items, response.split("<StockItemsOverMaxResult>")[1].split("</StockItemsOverMaxResult>")[0].split("<string>"));
 			
 			items.replaceAll(s -> s.replace("</string>", ""));
 			items.remove(0);
@@ -246,32 +167,13 @@ public class Storage {
 			
 			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockItemsMostSold xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>";
 			
-			connection.setDoOutput(true);
+			String response = API.generateConnection(connection, xml);
 			
-			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
-			
-			writer.writeBytes(xml);
-			writer.flush();
-			writer.close();
-			
-			BufferedReader input = new BufferedReader(
-					new InputStreamReader(connection.getInputStream()));
-			
-			String line;
-			
-			StringBuilder response = new StringBuilder();
-			
-			while ((line = input.readLine()) != null)
-				
-				response.append(line);
-			
-			input.close();
-			
-			if (!response.toString().contains("<StockItemsMostSoldResult>"))
+			if (!response.contains("<StockItemsMostSoldResult>"))
 				
 				System.out.println(items);
 			
-			Collections.addAll(items, response.toString().split("<StockItemsMostSoldResult>")[1].split("</StockItemsMostSoldResult>")[0].split("<string>"));
+			Collections.addAll(items, response.split("<StockItemsMostSoldResult>")[1].split("</StockItemsMostSoldResult>")[0].split("<string>"));
 			
 			items.replaceAll(s -> s.replace("</string>", ""));
 			items.remove(0);
