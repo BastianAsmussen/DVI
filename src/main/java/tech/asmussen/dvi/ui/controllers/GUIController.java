@@ -6,10 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import tech.asmussen.dvi.api.API;
 import tech.asmussen.dvi.core.DVI;
-import tech.asmussen.dvi.core.News;
-import tech.asmussen.dvi.core.Outside;
-import tech.asmussen.dvi.core.Storage;
+import tech.asmussen.dvi.api.News;
+import tech.asmussen.dvi.api.Outside;
+import tech.asmussen.dvi.api.Storage;
 import tech.asmussen.util.Uptime;
 
 import java.net.URL;
@@ -27,20 +28,26 @@ public class GUIController implements Initializable {
 	private Label storageHumidityLabel;
 	
 	@FXML
+	private ListView<String> underMinimumList;
+	
+	@FXML
+	private ListView<String> overMaximumList;
+	
+	@FXML
+	private ListView<String> mostSoldList;
+	
+	@FXML
 	private Label outsideTemperatureLabel;
 	
 	@FXML
 	private Label outsideHumidityLabel;
 	
-	// Denmark time label.
 	@FXML
 	private Label dkTimeLabel;
 	
-	// London time label.
 	@FXML
 	private Label gbTimeLabel;
 	
-	// Singapore time label.
 	@FXML
 	private Label sgTimeLabel;
 	
@@ -50,13 +57,7 @@ public class GUIController implements Initializable {
 	@FXML
 	private Label uptimeLabel;
 	
-	@FXML
-	private ListView<String> underMinimumList;
-	
-	@FXML
-	private ListView<String> overMaximumList;
-	
-	private static final int WAIT_TIME = 300; // Run every 5 minutes.
+	private static final int WAIT_TIME = 300; // 300 seconds = 5 minutes.
 	
 	private static int iteration = 0;
 	
@@ -70,15 +71,25 @@ public class GUIController implements Initializable {
 		
 		if (iteration == 0) {
 			
-			System.out.println("Updating asynchronous items...");
-			
-			storageTemperatureLabel.setText(String.format("Temp: %.2f°C", Storage.getTemperature()));
-			storageHumidityLabel.setText(String.format("Fugt: %.2f%%", Storage.getHumidity()));
-			
-			outsideTemperatureLabel.setText(String.format("Temp: %.2f°C", Outside.getTemperature()));
-			outsideHumidityLabel.setText(String.format("Fugt: %.2f%%", Outside.getHumidity()));
-			
-			newsLabel.setText(new News().get());
+			if (API.isConnected()) {
+				
+				System.out.println("Updating asynchronous items...");
+				
+				storageTemperatureLabel.setText(String.format("Temp: %.2f°C", Storage.getTemperature()));
+				storageHumidityLabel.setText(String.format("Fugt: %.2f%%", Storage.getHumidity()));
+				
+				underMinimumList.getItems().addAll(Storage.getItemsUnderMinimum());
+				overMaximumList.getItems().addAll(Storage.getItemsOverMaximum());
+				mostSoldList.getItems().addAll(Storage.getMostSoldItems());
+				
+				outsideTemperatureLabel.setText(String.format("Temp: %.2f°C", Outside.getTemperature()));
+				outsideHumidityLabel.setText(String.format("Fugt: %.2f%%", Outside.getHumidity()));
+				
+				newsLabel.setText(new News().getNews());
+				
+			} else
+				
+				System.err.println("Failed to update asynchronous items, no internet!");
 			
 			iteration = WAIT_TIME;
 			

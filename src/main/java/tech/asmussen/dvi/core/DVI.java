@@ -1,7 +1,6 @@
 package tech.asmussen.dvi.core;
 
 import tech.asmussen.dvi.ui.applications.GUIApplication;
-import tech.asmussen.util.Threading;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,9 +18,9 @@ public class DVI {
 		
 		Date date = new Date();
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
 		
-		switch (timezone) {
+		switch (timezone.toUpperCase()) {
 			
 			case "DK" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
 			case "GB" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/London"));
@@ -35,9 +34,6 @@ public class DVI {
 	
 	public static void main(String[] args) {
 		
-		//Threading.createThread(() -> GUIApplication.main(args));
-		//Threading.startThreads();
-		
-		System.out.println(Storage.getTemperature());
+		GUIApplication.main(args);
 	}
 }

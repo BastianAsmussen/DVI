@@ -10,6 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:18.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:18.0.1" level="project" />
@@ -22,6 +23,8 @@
     <orderEntry type="library" name="Maven: com.rometools:rome:1.18.0" level="project" />
     <orderEntry type="library" name="Maven: com.rometools:rome-utils:1.18.0" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-reload4j:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.reload4j:reload4j:1.2.19" level="project" />
   </component>
 </module>

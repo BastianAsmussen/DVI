@@ -12,7 +12,7 @@ public class GUIApplication extends Application {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("gui-view.fxml"));
 		
-		Scene scene = new Scene(loader.load(), 600, 400);
+		Scene scene = new Scene(loader.load(), 800, 400);
 		
 		stage.setTitle("DVI - Statistik");
 		stage.setScene(scene);
