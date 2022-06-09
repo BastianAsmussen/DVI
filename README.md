@@ -1,5 +1,5 @@
 # DVI
-DVI - Dansk VinImport
+DVI - Dansk Vin Import
 
 ## Information
 [⚖️ License](LICENSE)
