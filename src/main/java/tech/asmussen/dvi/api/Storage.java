@@ -6,8 +6,24 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * A class that is used to fetch information about inside the building.
+ *
+ * @author Bastian A. W. Asmussen (BastianA)
+ * @version 1.0.0
+ * @see #getTemperature()
+ * @see #getHumidity()
+ * @see #getItemsOverMaximum()
+ * @see #getItemsUnderMinimum()
+ * @see #getMostSoldItems()
+ */
 public class Storage {
 	
+	/**
+	 * Get the temperature from the storage location.
+	 *
+	 * @return The temperature of the storage location in celsius.
+	 */
 	public static double getTemperature() {
 		
 		final String operator = "StockTemp"; // The name of the operator.
@@ -41,6 +57,11 @@ public class Storage {
 		return temperature; // Return the temperature.
 	}
 	
+	/**
+	 * Get the humidity of the building.
+	 *
+	 * @return The humidity percentage from inside the building.
+	 */
 	public static double getHumidity() {
 		
 		final String operator = "StockHumidity"; // The name of the operator.
@@ -74,44 +95,11 @@ public class Storage {
 		return humidityPercentage; // Return the humidity percentage.
 	}
 	
-	public static ArrayList<String> getItemsUnderMinimum() {
-		
-		final String operator = "StockItemsUnderMin"; // The name of the operator.
-		
-		ArrayList<String> items = new ArrayList<>(); // The items variable.
-		
-		try {
-			
-			URL url = API.generateCompleteURL(operator); // The URL to the web service.
-			
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // The connection to the web service.
-			
-			connection.setRequestMethod("POST"); // The request method to use.
-			connection.setRequestProperty("Content-Type", "application/soap+xml; charset=utf-8"); // The type of data that is sent to the web service.
-			
-			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockItemsUnderMin xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>"; // The XML to send to the web service.
-			
-			String response = API.generateConnection(connection, xml); // The response from the web service.
-			
-			if (!response.contains("<StockItemsUnderMinResult>")) // If the response does not contain the result.
-				
-				return items; // Return the items.
-			
-			Collections.addAll(items, response.split("<StockItemsUnderMinResult>")[1].split("</StockItemsUnderMinResult>")[0].split("<string>")); // Get the items from the response.
-			
-			items.replaceAll(s -> s.replace("</string>", "")); // Remove the XML tags from the items.
-			items.remove(0); // Remove the first item because it is empty.
-			
-			return items; // Return the items.
-			
-		} catch (IOException | NumberFormatException e) {
-			
-			e.printStackTrace(); // Print the stack trace if an error occurs.
-		}
-		
-		return items; // Return the items.
-	}
-	
+	/**
+	 * Get all items that are over maximum stock and needs to be sold.
+	 *
+	 * @return An array list of items that are over maximum stock.
+	 */
 	public static ArrayList<String> getItemsOverMaximum() {
 		
 		final String operator = "StockItemsOverMax"; // The name of the operator.
@@ -150,6 +138,54 @@ public class Storage {
 		return items; // Return the items.
 	}
 	
+	/**
+	 * Get all items that are under minimum stock and needs to be ordered.
+	 *
+	 * @return An array list of items that are under minimum stock.
+	 */
+	public static ArrayList<String> getItemsUnderMinimum() {
+		
+		final String operator = "StockItemsUnderMin"; // The name of the operator.
+		
+		ArrayList<String> items = new ArrayList<>(); // The items variable.
+		
+		try {
+			
+			URL url = API.generateCompleteURL(operator); // The URL to the web service.
+			
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // The connection to the web service.
+			
+			connection.setRequestMethod("POST"); // The request method to use.
+			connection.setRequestProperty("Content-Type", "application/soap+xml; charset=utf-8"); // The type of data that is sent to the web service.
+			
+			final String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?> <soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"> <soap12:Body> <StockItemsUnderMin xmlns=\"http://dvimonitor.pilotdrift.dk/\" /> </soap12:Body> </soap12:Envelope>"; // The XML to send to the web service.
+			
+			String response = API.generateConnection(connection, xml); // The response from the web service.
+			
+			if (!response.contains("<StockItemsUnderMinResult>")) // If the response does not contain the result.
+				
+				return items; // Return the items.
+			
+			Collections.addAll(items, response.split("<StockItemsUnderMinResult>")[1].split("</StockItemsUnderMinResult>")[0].split("<string>")); // Get the items from the response.
+			
+			items.replaceAll(s -> s.replace("</string>", "")); // Remove the XML tags from the items.
+			items.remove(0); // Remove the first item because it is empty.
+			
+			return items; // Return the items.
+			
+		} catch (IOException | NumberFormatException e) {
+			
+			e.printStackTrace(); // Print the stack trace if an error occurs.
+		}
+		
+		return items; // Return the items.
+	}
+	
+	/**
+	 * Get an array list of the items that are most sold.
+	 *
+	 * @return An array list of the items that are most sold.
+	 */
 	public static ArrayList<String> getMostSoldItems() {
 		
 		final String operator = "StockItemsMostSold"; // The name of the operator.

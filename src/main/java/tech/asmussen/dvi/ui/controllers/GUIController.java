@@ -22,37 +22,26 @@ public class GUIController implements Initializable {
 	
 	@FXML
 	private Label storageTemperatureLabel;
-	
 	@FXML
 	private Label storageHumidityLabel;
-	
-	@FXML
-	private ListView<String> underMinimumList;
-	
 	@FXML
 	private ListView<String> overMaximumList;
-	
+	@FXML
+	private ListView<String> underMinimumList;
 	@FXML
 	private ListView<String> mostSoldList;
-	
 	@FXML
 	private Label outsideTemperatureLabel;
-	
 	@FXML
 	private Label outsideHumidityLabel;
-	
 	@FXML
 	private Label dkTimeLabel;
-	
 	@FXML
 	private Label gbTimeLabel;
-	
 	@FXML
 	private Label sgTimeLabel;
-	
 	@FXML
 	private Label newsLabel;
-	
 	@FXML
 	private Label uptimeLabel;
 	

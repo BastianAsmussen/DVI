@@ -10,6 +10,13 @@ import java.net.URL;
 
 /**
  * The API class is used to communicate with the server.
+ *
+ * @author Bastian A. W. Asmussen (BastianA)
+ * @version 1.0.0
+ * @see #URL
+ * @see #generateCompleteURL(String)
+ * @see #generateConnection(HttpURLConnection, String)
+ * @see #isConnected()
  */
 public class API {
 	
@@ -28,25 +35,6 @@ public class API {
 	public static URL generateCompleteURL(String operator) throws MalformedURLException {
 		
 		return new URL(URL + "?op=" + operator); // Returns the complete URL.
-	}
-	
-	/**
-	 * Checks if the client (this program) has a connection to the internet.
-	 *
-	 * @return True if the client has a connection to the internet, false otherwise.
-	 */
-	public static boolean isConnected() {
-		
-		try {
-			
-			new URL("https://google.com").openConnection().connect(); // Try to connect to google.com
-			
-			return true; // If we can connect to google.com, we are connected.
-			
-		} catch (IOException e) {
-			
-			return false; // If we can't connect to google.com, we are not connected.
-		}
 	}
 	
 	/**
@@ -80,5 +68,24 @@ public class API {
 		input.close(); // Close the reader.
 		
 		return response.toString(); // Return the response from the web server.
+	}
+	
+	/**
+	 * Checks if the client (this program) has a connection to the internet.
+	 *
+	 * @return True if the client has a connection to the internet, false otherwise.
+	 */
+	public static boolean isConnected() {
+		
+		try {
+			
+			new URL("https://google.com").openConnection().connect(); // Try to connect to google.com
+			
+			return true; // If we can connect to google.com, we are connected.
+			
+		} catch (IOException e) {
+			
+			return false; // If we can't connect to google.com, we are not connected.
+		}
 	}
 }

@@ -4,8 +4,21 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * A class that is used to fetch information about outside the building.
+ *
+ * @author Bastian A. W. Asmussen (BastianA)
+ * @version 1.0.0
+ * @see #getTemperature()
+ * @see #getHumidity()
+ */
 public class Outside {
 	
+	/**
+	 * Get the temperature from outside the location.
+	 *
+	 * @return The temperature of outside the location in celsius.
+	 */
 	public static double getTemperature() {
 		
 		final String operator = "OutdoorTemp"; // This is the name of the method in the web service.
@@ -39,6 +52,11 @@ public class Outside {
 		return temperature; // This returns the temperature.
 	}
 	
+	/**
+	 * Get the humidity from outside the building.
+	 *
+	 * @return The humidity percentage from outside the building.
+	 */
 	public static double getHumidity() {
 		
 		final String operator = "OutdoorHumidity"; // This is the name of the method in the web service.

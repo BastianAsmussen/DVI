@@ -51,6 +51,11 @@ public class DVI {
 		return dateFormat.format(new Date()); // Returns the current time in the format HH:mm:ss dd-MM-yyyy.
 	}
 	
+	/**
+	 * Starts the application.
+	 *
+	 * @param args The arguments of the program.
+	 */
 	public static void main(String[] args) {
 		
 		GUIApplication.main(args); // Starts the GUI and parses the arguments given to the program.
