@@ -8,7 +8,6 @@ import javafx.scene.control.ListView;
 
 import tech.asmussen.dvi.api.API;
 import tech.asmussen.dvi.core.DVI;
-import tech.asmussen.dvi.api.News;
 import tech.asmussen.dvi.api.Outside;
 import tech.asmussen.dvi.api.Storage;
 import tech.asmussen.util.Uptime;
@@ -71,6 +70,8 @@ public class GUIController implements Initializable {
 		
 		if (iteration == 0) {
 			
+			newsLabel.setText(DVI.NEWS_HANDLE.getNews());
+			
 			if (API.isConnected()) {
 				
 				storageTemperatureLabel.setText(String.format("Temp: %.2f°C", Storage.getTemperature()));
@@ -86,8 +87,6 @@ public class GUIController implements Initializable {
 				
 				outsideTemperatureLabel.setText(String.format("Temp: %.2f°C", Outside.getTemperature()));
 				outsideHumidityLabel.setText(String.format("Fugt: %.2f%%", Outside.getHumidity()));
-				
-				newsLabel.setText(new News().getNews());
 				
 				System.out.printf("[%s] Opdaterede GUI!\n", DVI.getTime("DK"));
 				

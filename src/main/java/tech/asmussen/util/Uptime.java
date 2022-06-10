@@ -2,8 +2,9 @@ package tech.asmussen.util;
 
 /**
  * A utility class for getting the current time.
- * @version 1.0.0
+ *
  * @author Bastian A. W. Asmussen (BastianA)
+ * @version 1.0.0
  * @see #getCurrentTime()
  * @see #format(long)
  */

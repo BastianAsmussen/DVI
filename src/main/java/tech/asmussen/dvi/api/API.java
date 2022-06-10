@@ -21,9 +21,7 @@ public class API {
 		
 		try {
 			
-			new URL("https://google.com")
-					.openConnection()
-					.connect();
+			new URL("https://google.com").openConnection().connect();
 			
 			return true;
 			
@@ -43,8 +41,7 @@ public class API {
 		writer.flush();
 		writer.close();
 		
-		BufferedReader input = new BufferedReader(
-				new InputStreamReader(connection.getInputStream()));
+		BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		
 		String line;
 		

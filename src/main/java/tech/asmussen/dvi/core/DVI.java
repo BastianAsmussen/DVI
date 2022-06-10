@@ -1,5 +1,6 @@
 package tech.asmussen.dvi.core;
 
+import tech.asmussen.dvi.api.News;
 import tech.asmussen.dvi.ui.applications.GUIApplication;
 
 import java.text.DateFormat;
@@ -13,6 +14,8 @@ public class DVI {
 	 * A snapshot of the time in milliseconds the program started running.
 	 */
 	public static final long START_TIME = System.currentTimeMillis();
+	
+	public static final News NEWS_HANDLE = new News();
 	
 	public static String getTime(String timezone) {
 		
