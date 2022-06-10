@@ -10,19 +10,19 @@ public class GUIApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("gui-view.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("gui-view.fxml")); // Load the FXML file.
 		
-		Scene scene = new Scene(loader.load(), 800, 400);
+		Scene scene = new Scene(loader.load(), 800, 400); // Create the scene.
 		
-		stage.setTitle("DVI - Statistik");
-		stage.setScene(scene);
-		stage.setResizable(false);
-		stage.setOnCloseRequest(event -> System.exit(0));
-		stage.show();
+		stage.setTitle("DVI - Statistik"); // Set the title.
+		stage.setScene(scene); // Set the scene.
+		stage.setResizable(false); // Make the stage non-resizable.
+		stage.setOnCloseRequest(event -> System.exit(0)); // Make the program stop when the user clicks the close button.
+		stage.show(); // Show the stage.
 	}
 	
 	public static void main(String[] args) {
 		
-		launch();
+		launch(); // Launch the application.
 	}
 }

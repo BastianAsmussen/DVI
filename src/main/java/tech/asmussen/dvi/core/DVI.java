@@ -8,6 +8,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * The core class of Dansk Vin Import (DVI).
+ *
+ * @author Bastian A. W. Asmussen (BastianA)
+ * @version 1.0.0
+ * @see #START_TIME
+ * @see #NEWS_HANDLE
+ * @see #getTime(String)
+ */
 public class DVI {
 	
 	/**
@@ -15,26 +24,35 @@ public class DVI {
 	 */
 	public static final long START_TIME = System.currentTimeMillis();
 	
+	/**
+	 * The handle for an instance of the news class.
+	 */
 	public static final News NEWS_HANDLE = new News();
 	
+	/**
+	 * Returns the current time in the format HH:mm:ss dd-MM-yyyy.
+	 *
+	 * @param timezone The timezone to use ("DK", "GB" or "SG"). Defaults to "UTC".
+	 * @return The current time in the format HH:mm:ss dd-MM-yyyy.
+	 */
 	public static String getTime(String timezone) {
 		
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
 		
 		switch (timezone.toUpperCase()) {
 			
-			case "DK" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
-			case "GB" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/London"));
-			case "SG" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+			case "DK" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen")); // Timezone for Denmark.
+			case "GB" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/London")); // Timezone for Great Britain.
+			case "SG" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore")); // Timezone for Singapore.
 			
-			default -> dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+			default -> dateFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // Default timezone is UTC.
 		}
 		
-		return dateFormat.format(new Date());
+		return dateFormat.format(new Date()); // Returns the current time in the format HH:mm:ss dd-MM-yyyy.
 	}
 	
 	public static void main(String[] args) {
 		
-		GUIApplication.main(args);
+		GUIApplication.main(args); // Starts the GUI and parses the arguments given to the program.
 	}
 }
