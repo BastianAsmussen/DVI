@@ -16,8 +16,6 @@ public class DVI {
 	
 	public static String getTime(String timezone) {
 		
-		Date date = new Date();
-		
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
 		
 		switch (timezone.toUpperCase()) {
@@ -29,7 +27,7 @@ public class DVI {
 			default -> dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		}
 		
-		return dateFormat.format(date);
+		return dateFormat.format(new Date());
 	}
 	
 	public static void main(String[] args) {

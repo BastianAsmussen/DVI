@@ -62,7 +62,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="207.0" text="Singapore">
+      <Label layoutX="170.0" layoutY="207.0" text="Singapore">
          <font>
             <Font size="18.0" />
          </font>
@@ -78,12 +78,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="sgTimeLabel" layoutX="190.0" layoutY="234.0" text="Ukendt">
+      <Label fx:id="sgTimeLabel" layoutX="180.0" layoutY="235.0" text="Ukendt">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="520.0" layoutY="14.0" text="Lagerstatus">
+      <Label layoutX="502.0" layoutY="14.0" text="Lagerstatus">
          <font>
             <Font size="24.0" />
          </font>
@@ -104,7 +104,7 @@
       <Line endX="-302.0" endY="248.0" layoutX="624.0" layoutY="-7.0" startX="-61.79290771484375" startY="248.0" />
       <Label fx:id="newsLabel" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="374.0" text="Nyheder: Ukendt." textOverrun="CLIP" />
       <Line endX="-100.0" endY="18.0" layoutX="126.0" layoutY="303.0" startX="-100.0" />
-      <Line endX="-100.0" endY="18.0" layoutX="286.0" layoutY="235.0" startX="-100.0" />
+      <Line endX="-100.0" endY="18.0" layoutX="276.0" layoutY="236.0" startX="-100.0" />
       <Line endX="-98.0999755859375" endY="154.0" layoutX="659.0" layoutY="246.0" startX="-98.0999755859375" startY="-152.5" />
       <Label layoutX="610.0" layoutY="61.0" text="Mest solgte varer">
          <font>

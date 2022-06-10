@@ -57,7 +57,7 @@ public class GUIController implements Initializable {
 	@FXML
 	private Label uptimeLabel;
 	
-	private static final int WAIT_TIME = 300; // 300 seconds = 5 minutes.
+	private static final int DELAY = 300; // 300 seconds = 5 minutes.
 	
 	private static int iteration = 0;
 	
@@ -73,10 +73,12 @@ public class GUIController implements Initializable {
 			
 			if (API.isConnected()) {
 				
-				System.out.println("Updating asynchronous items...");
-				
 				storageTemperatureLabel.setText(String.format("Temp: %.2f°C", Storage.getTemperature()));
 				storageHumidityLabel.setText(String.format("Fugt: %.2f%%", Storage.getHumidity()));
+				
+				underMinimumList.getItems().clear();
+				overMaximumList.getItems().clear();
+				mostSoldList.getItems().clear();
 				
 				underMinimumList.getItems().addAll(Storage.getItemsUnderMinimum());
 				overMaximumList.getItems().addAll(Storage.getItemsOverMaximum());
@@ -87,11 +89,13 @@ public class GUIController implements Initializable {
 				
 				newsLabel.setText(new News().getNews());
 				
+				System.out.printf("[%s] Opdaterede GUI!\n", DVI.getTime("DK"));
+				
 			} else
 				
-				System.err.println("Failed to update asynchronous items, no internet!");
+				System.err.printf("[%s] Kunne ikke opdatere GUI, ingen internet forbindelse!\n", DVI.getTime("DK"));
 			
-			iteration = WAIT_TIME;
+			iteration = DELAY;
 			
 		} else
 			
