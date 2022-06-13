@@ -1,9 +1,9 @@
-tech\asmussen\dvi\api\API.class
-tech\asmussen\util\Uptime.class
 tech\asmussen\dvi\api\Outside.class
-tech\asmussen\dvi\ui\controllers\GUIController.class
 module-info.class
 tech\asmussen\dvi\api\News.class
-tech\asmussen\dvi\api\Storage.class
-tech\asmussen\dvi\ui\applications\GUIApplication.class
 tech\asmussen\dvi\core\DVI.class
+tech\asmussen\dvi\api\Storage.class
+tech\asmussen\util\Uptime.class
+tech\asmussen\dvi\api\API.class
+tech\asmussen\dvi\ui\applications\GUIApplication.class
+tech\asmussen\dvi\ui\controllers\GUIController.class

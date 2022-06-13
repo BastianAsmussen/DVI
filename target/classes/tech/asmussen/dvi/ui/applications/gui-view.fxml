@@ -8,110 +8,110 @@
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tech.asmussen.dvi.ui.controllers.GUIController">
 	<AnchorPane prefHeight="400.0" prefWidth="800.0">
 		<Label fx:id="uptimeLabel" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="338.0" text="Oppetid: Ukendt." />
-      <Label layoutX="24.0" layoutY="57.0" text="Lager">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Line endX="-100.0" endY="35.0" layoutX="130.0" layoutY="82.0" startX="-100.0" />
-      <Line endX="-100.0" endY="211.5" layoutX="421.0" layoutY="151.0" startX="-100.0" startY="-152.0" />
-      <Label layoutX="204.0" layoutY="61.0" text="Udenfor">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="24.0" layoutY="14.0" text="Temperatur og Fugtighed">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="storageTemperatureLabel" layoutX="34.0" layoutY="82.0" text="Temp: 0,00°C">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="storageHumidityLabel" layoutX="35.0" layoutY="100.0" text="Fugt: 0,00%">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Line endX="-100.0" endY="35.0" layoutX="311.0" layoutY="86.0" startX="-100.0" />
-      <Label fx:id="outsideTemperatureLabel" layoutX="215.0" layoutY="86.0" text="Temp: 0,00°C">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="outsideHumidityLabel" layoutX="215.0" layoutY="104.0" text="Fugt: 0,00%">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Line endX="-302.0" endY="248.0" layoutX="303.0" layoutY="-99.0" startX="17.5" startY="248.0" />
-      <Label layoutX="97.0" layoutY="163.0" text="Dato og Tid">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="23.0" layoutY="207.0" text="København">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="23.0" layoutY="275.0" text="London">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="170.0" layoutY="207.0" text="Singapore">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Line endX="-100.0" endY="18.0" layoutX="130.0" layoutY="235.0" startX="-100.0" />
-      <Label fx:id="dkTimeLabel" layoutX="34.0" layoutY="234.0" text="Ukendt">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="gbTimeLabel" layoutX="33.0" layoutY="302.0" text="Ukendt">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="sgTimeLabel" layoutX="180.0" layoutY="235.0" text="Ukendt">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="500.0" layoutY="14.0" text="Lagerstatus">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Line endX="-605.0" endY="248.0" layoutX="605.0" layoutY="115.0" startX="195.0" startY="248.0" />
-      <Label layoutX="354.0" layoutY="61.0" text="Varer over maksimum">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Line endX="-302.0" endY="248.0" layoutX="624.0" layoutY="-156.0" startX="177.0" startY="248.0" />
-      <ListView fx:id="overMaximumList" layoutX="341.0" layoutY="103.0" prefHeight="94.0" prefWidth="200.0" />
-      <Label layoutX="354.0" layoutY="207.0" text="Varer under minimum">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Line endX="-302.0" endY="248.0" layoutX="624.0" layoutY="-7.0" startX="-61.79290771484375" startY="248.0" />
-      <Label fx:id="newsLabel" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="374.0" text="Nyheder: Ukendt." textOverrun="CLIP" />
-      <Line endX="-100.0" endY="18.0" layoutX="129.0" layoutY="303.0" startX="-100.0" />
-      <Line endX="-100.0" endY="18.0" layoutX="276.0" layoutY="236.0" startX="-100.0" />
-      <Line endX="-98.0999755859375" endY="117.5" layoutX="659.0" layoutY="246.0" startX="-98.0999755859375" startY="-152.5" />
-      <Label layoutX="610.0" layoutY="61.0" text="Mest solgte varer">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ListView fx:id="underMinimumList" layoutX="342.0" layoutY="252.0" prefHeight="94.0" prefWidth="200.0" />
-      <ListView fx:id="mostSoldList" layoutX="579.0" layoutY="106.0" prefHeight="242.0" prefWidth="200.0" />
+		<Label layoutX="24.0" layoutY="57.0" text="Lager">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Line endX="-100.0" endY="35.0" layoutX="130.0" layoutY="82.0" startX="-100.0" />
+		<Line endX="-100.0" endY="211.5" layoutX="421.0" layoutY="151.0" startX="-100.0" startY="-152.0" />
+		<Label layoutX="204.0" layoutY="61.0" text="Udenfor">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Label layoutX="24.0" layoutY="14.0" text="Temperatur og Fugtighed">
+			<font>
+				<Font size="24.0" />
+			</font>
+		</Label>
+		<Label fx:id="storageTemperatureLabel" layoutX="34.0" layoutY="82.0" text="Temp: 0,00°C">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label fx:id="storageHumidityLabel" layoutX="35.0" layoutY="100.0" text="Fugt: 0,00%">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Line endX="-100.0" endY="35.0" layoutX="311.0" layoutY="86.0" startX="-100.0" />
+		<Label fx:id="outsideTemperatureLabel" layoutX="215.0" layoutY="86.0" text="Temp: 0,00°C">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label fx:id="outsideHumidityLabel" layoutX="215.0" layoutY="104.0" text="Fugt: 0,00%">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Line endX="-302.0" endY="248.0" layoutX="303.0" layoutY="-99.0" startX="17.5" startY="248.0" />
+		<Label layoutX="97.0" layoutY="163.0" text="Dato og Tid">
+			<font>
+				<Font size="24.0" />
+			</font>
+		</Label>
+		<Label layoutX="23.0" layoutY="207.0" text="København">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Label layoutX="23.0" layoutY="275.0" text="London">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Label layoutX="170.0" layoutY="207.0" text="Singapore">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Line endX="-100.0" endY="18.0" layoutX="130.0" layoutY="235.0" startX="-100.0" />
+		<Label fx:id="dkTimeLabel" layoutX="34.0" layoutY="234.0" text="Ukendt">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label fx:id="gbTimeLabel" layoutX="33.0" layoutY="302.0" text="Ukendt">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label fx:id="sgTimeLabel" layoutX="180.0" layoutY="235.0" text="Ukendt">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label layoutX="500.0" layoutY="14.0" text="Lagerstatus">
+			<font>
+				<Font size="24.0" />
+			</font>
+		</Label>
+		<Line endX="-605.0" endY="248.0" layoutX="605.0" layoutY="115.0" startX="195.0" startY="248.0" />
+		<Label layoutX="354.0" layoutY="61.0" text="Varer over maksimum">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Line endX="-302.0" endY="248.0" layoutX="624.0" layoutY="-156.0" startX="177.0" startY="248.0" />
+		<ListView fx:id="overMaximumList" layoutX="341.0" layoutY="103.0" prefHeight="94.0" prefWidth="200.0" />
+		<Label layoutX="354.0" layoutY="207.0" text="Varer under minimum">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<Line endX="-302.0" endY="248.0" layoutX="624.0" layoutY="-7.0" startX="-61.79290771484375" startY="248.0" />
+		<Label fx:id="newsLabel" accessibleRole="HYPERLINK" accessibleText="½" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="374.0" text="Nyheder: Ukendt." textOverrun="CLIP" />
+		<Line endX="-100.0" endY="18.0" layoutX="129.0" layoutY="303.0" startX="-100.0" />
+		<Line endX="-100.0" endY="18.0" layoutX="276.0" layoutY="236.0" startX="-100.0" />
+		<Line endX="-98.0999755859375" endY="117.5" layoutX="659.0" layoutY="246.0" startX="-98.0999755859375" startY="-152.5" />
+		<Label layoutX="610.0" layoutY="61.0" text="Mest solgte varer">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Label>
+		<ListView fx:id="underMinimumList" layoutX="342.0" layoutY="252.0" prefHeight="94.0" prefWidth="200.0" />
+		<ListView fx:id="mostSoldList" layoutX="579.0" layoutY="106.0" prefHeight="242.0" prefWidth="200.0" />
 	</AnchorPane>
 </HBox>

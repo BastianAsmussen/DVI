@@ -79,7 +79,9 @@ public class API {
 		
 		try {
 			
-			new URL("https://google.com").openConnection().connect(); // Try to connect to google.com
+			new URL("https://google.com")
+					.openConnection()
+					.connect(); // Try to connect to google.com
 			
 			return true; // If we can connect to google.com, we are connected.
 			

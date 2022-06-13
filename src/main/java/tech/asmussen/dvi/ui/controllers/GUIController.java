@@ -12,11 +12,15 @@ import tech.asmussen.dvi.api.Outside;
 import tech.asmussen.dvi.api.Storage;
 import tech.asmussen.util.Uptime;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.awt.Desktop;
 
 public class GUIController implements Initializable {
 	
@@ -60,7 +64,7 @@ public class GUIController implements Initializable {
 	 */
 	private void updateGUI() {
 		
-		uptimeLabel.setText(Uptime.format(DVI.START_TIME)); // Update the uptime label.
+		uptimeLabel.setText(Uptime.formatTime(DVI.START_TIME)); // Update the uptime label.
 		
 		dkTimeLabel.setText(DVI.getTime("DK")); // Update the DK time label.
 		gbTimeLabel.setText(DVI.getTime("GB")); // Update the GB time label.
@@ -68,7 +72,27 @@ public class GUIController implements Initializable {
 		
 		if (iteration == 0) {
 			
+			iteration = DELAY; // Reset the timer.
+			
 			newsLabel.setText(DVI.NEWS_HANDLE.getNews()); // Update the news label.
+			newsLabel.onMouseClickedProperty().set(event -> {
+				
+				if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+					
+					try {
+						
+						Desktop.getDesktop().browse(
+								new URI(DVI.NEWS_HANDLE.getLink())
+						);
+						
+						System.out.printf("[%s] Opened article in browser.\n", DVI.getTime("DK"));
+						
+					} catch (IOException | URISyntaxException e) {
+						
+						e.printStackTrace();
+					}
+				}
+			});
 			
 			if (API.isConnected()) { // If the API is connected, update the API data.
 				
@@ -86,13 +110,11 @@ public class GUIController implements Initializable {
 				outsideTemperatureLabel.setText(String.format("Temp: %.2f°C", Outside.getTemperature())); // Update the outside temperature label.
 				outsideHumidityLabel.setText(String.format("Fugt: %.2f%%", Outside.getHumidity())); // Update the outside humidity label.
 				
-				System.out.printf("[%s] Opdaterede GUI!\n", DVI.getTime("DK")); // Print to the console.
+				System.out.printf("[%s] Opdaterede GUI.\n", DVI.getTime("DK")); // Print to the console.
 				
 			} else
 				
 				System.err.printf("[%s] Kunne ikke opdatere GUI, ingen internet forbindelse!\n", DVI.getTime("DK")); // Print to the console.
-			
-			iteration = DELAY; // Reset the timer.
 			
 		} else
 			

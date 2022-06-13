@@ -40,23 +40,29 @@ public class News {
 	private static final String NEWS_UNKNOWN = "Ukendt.";
 	
 	/**
+	 * A link to the current article. By default, this is set to {@link #NEWS_UNKNOWN}.
+	 */
+	public static String currentLink = NEWS_UNKNOWN;
+	
+	/**
 	 * Get the latest news from the {@link #NEWS_SOURCE} and add it to the {@link #NEWS_CACHE} if it isn't already there.
 	 *
 	 * @return The latest news.
 	 */
 	public String getNews() {
 		
-		// Explain the code below:
-		
-		String news = NEWS_UNKNOWN; // The news gets set to {@link #NEWS_UNKNOWN} by default.
+		String news = NEWS_UNKNOWN; // The news gets set to NEWS_UNKNOWN by default.
 		
 		try {
 			
-			SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(NEWS_SOURCE))); // Get the news from the {@link #NEWS_SOURCE}.
+			SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(NEWS_SOURCE))); // Get the news from the news source.
 			
 			feed.setEncoding(StandardCharsets.UTF_8.name()); // Set the encoding to UTF-8.
 			
-			news = new String(feed.getEntries().get(new Random().nextInt(feed.getEntries().size())).getTitle().getBytes()); // Get a random news article from all the articles.
+			int elementPosition = new Random().nextInt(feed.getEntries().size()); // Get a random element from the news.
+			
+			news = new String(feed.getEntries().get(elementPosition).getTitle().getBytes()); // Get a random news article from all the articles.
+			currentLink = new String(feed.getEntries().get(elementPosition).getLink().getBytes()); // Get the link to the current article.
 			
 		} catch (FeedException | IOException e) {
 			
@@ -69,8 +75,18 @@ public class News {
 			
 			NEWS_CACHE.add(news); // Add the news to the cache if it isn't already there.
 		
-		// Explain the ternary operator below:
-		return "Nyheder: " + (news.isBlank() || NEWS_UNKNOWN.equalsIgnoreCase(news) ? (NEWS_CACHE.isEmpty() ? NEWS_UNKNOWN : NEWS_CACHE.get(new Random().nextInt(NEWS_CACHE.size()))) : news); // If the news is blank or {@link #NEWS_UNKNOWN}, use the cache instead. If the cache is empty, use {@link #NEWS_UNKNOWN} instead.
+		return "Nyheder: " + (news.isBlank() || NEWS_UNKNOWN.equalsIgnoreCase(news) ? (NEWS_CACHE.isEmpty() ? NEWS_UNKNOWN : NEWS_CACHE.get(new Random().nextInt(NEWS_CACHE.size()))) : news); // If the news is blank or NEWS_UNKNOWN, use the cache instead. If the cache is empty, use NEWS_UNKNOWN instead.
+	}
+	
+	/**
+	 * Get the link of the current article.
+	 *
+	 * @return The link to the current article.
+	 * @see #getNews()
+	 */
+	public String getLink() {
+		
+		return currentLink; // Get the last news from the cache.
 	}
 	
 	/**
