@@ -33,13 +33,13 @@ public class DVI {
 	 * Returns the current time in the format HH:mm:ss dd-MM-yyyy.
 	 *
 	 * @param timezone The timezone to use ("DK", "GB" or "SG"). Defaults to "UTC".
-	 * @return The current time in the format HH:mm:ss dd-MM-yyyy.
+	 * @return The current time in the format HH:mm dd-MM-yyyy.
 	 */
 	public static String getTime(String timezone) {
 		
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
 		
-		switch (timezone == null ? "UTC" : timezone.toUpperCase()) { // If the timezone is null, set it to "UTC".
+		switch (timezone == null ? "UTC" : timezone.toUpperCase()) {
 			
 			case "DK" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen")); // Timezone for Denmark.
 			case "GB" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/London")); // Timezone for Great Britain.

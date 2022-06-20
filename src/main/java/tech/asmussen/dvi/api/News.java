@@ -16,11 +16,11 @@ import java.util.Random;
  *
  * @author Bastian A. W. Asmussen (BastianA)
  * @version 1.0.0
+ * @see #getNews()
+ * @see #formatNews(String)
  * @see #NEWS_SOURCE
  * @see #NEWS_CACHE
  * @see #NEWS_UNKNOWN
- * @see #getNews()
- * @see #formatNews(String)
  */
 public class News {
 	
@@ -35,7 +35,7 @@ public class News {
 	private static final ArrayList<String> NEWS_CACHE = new ArrayList<>();
 	
 	/**
-	 * If the news is unavailable and the {@link #NEWS_CACHE} is empty, this will be used as a fallback.
+	 * If the news is unavailable and the {@link #NEWS_CACHE} is empty, this will be used as a fallback message.
 	 */
 	private static final String NEWS_UNKNOWN = "Ukendt.";
 	
@@ -48,6 +48,11 @@ public class News {
 	 * Get the latest news from the {@link #NEWS_SOURCE} and add it to the {@link #NEWS_CACHE} if it isn't already there.
 	 *
 	 * @return The latest news.
+	 * @see #formatNews(String)
+	 * @see #getCachedNews()
+	 * @see #currentLink
+	 * @see #NEWS_UNKNOWN
+	 * @see #NEWS_CACHE
 	 */
 	public String getNews() {
 		
@@ -75,18 +80,30 @@ public class News {
 			
 			NEWS_CACHE.add(news); // Add the news to the cache if it isn't already there.
 		
-		return "Nyheder: " + (news.isBlank() || NEWS_UNKNOWN.equalsIgnoreCase(news) ? (NEWS_CACHE.isEmpty() ? NEWS_UNKNOWN : NEWS_CACHE.get(new Random().nextInt(NEWS_CACHE.size()))) : news); // If the news is blank or NEWS_UNKNOWN, use the cache instead. If the cache is empty, use NEWS_UNKNOWN instead.
+		return "Nyheder: " + (news.isBlank() || NEWS_UNKNOWN.equalsIgnoreCase(news) ? getCachedNews() : news); // If the news is blank or NEWS_UNKNOWN, use the cache instead. If the cache is empty, use NEWS_UNKNOWN instead.
 	}
 	
 	/**
 	 * Get the link of the current article.
 	 *
 	 * @return The link to the current article.
-	 * @see #getNews()
+	 * @see #currentLink
 	 */
 	public String getLink() {
 		
 		return currentLink; // Get the last news from the cache.
+	}
+	
+	/**
+	 * Grab a random element from {@link #NEWS_CACHE} and return it.
+	 *
+	 * @return If {@link #NEWS_CACHE} is empty, return {@link #NEWS_UNKNOWN}, otherwise return a random element from {@link #NEWS_CACHE}.
+	 * @see #NEWS_CACHE
+	 * @see #NEWS_UNKNOWN
+	 */
+	private String getCachedNews() {
+		
+		return NEWS_CACHE.isEmpty() ? NEWS_UNKNOWN : NEWS_CACHE.get(new Random().nextInt(NEWS_CACHE.size()));
 	}
 	
 	/**
