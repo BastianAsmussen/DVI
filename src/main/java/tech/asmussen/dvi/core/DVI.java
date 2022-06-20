@@ -39,7 +39,7 @@ public class DVI {
 		
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
 		
-		switch (timezone.toUpperCase()) {
+		switch (timezone == null ? "UTC" : timezone.toUpperCase()) { // If the timezone is null, set it to "UTC".
 			
 			case "DK" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen")); // Timezone for Denmark.
 			case "GB" -> dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/London")); // Timezone for Great Britain.
