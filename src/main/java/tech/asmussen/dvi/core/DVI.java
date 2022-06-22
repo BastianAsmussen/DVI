@@ -37,7 +37,7 @@ public class DVI {
 	 */
 	public static String getTime(String timezone) {
 		
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy"); // HH for hour, mm for minute, ss for second, dd for day, MM for month, yyyy for year.
 		
 		switch (timezone == null ? "UTC" : timezone.toUpperCase()) {
 			
